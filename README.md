@@ -68,48 +68,7 @@ haha_chatbot/
 
 ---
 
-## How to Run
 
-### 1. Open the project folder
-
-```bash
-cd C:\Users\User\Downloads\haha_chatbot
-```
-
-### 2. Install Flask
-
-```bash
-pip install flask
-```
-
-### 3. Run the application
-
-```bash
-python app2.py
-```
-
-### 4. Open in browser
-
-```text
-http://127.0.0.1:5000
-```
-
----
-
-## Important Note
-
-This is a **Python Flask project**, not a Node.js project.
-
-So commands like these are not required:
-
-```bash
-npm install
-npm run dev
-```
-
-If you get a `package.json` error, it means npm is being run in the wrong type of project folder.
-
----
 
 ## Main Files
 
@@ -141,17 +100,6 @@ Warranty query
 Spare parts query
 Raise ticket
 ```
-
----
-
-## Future Improvements
-
-* Admin dashboard for ticket management
-* Ticket status update system
-* Real service center database
-* Email or WhatsApp ticket notifications
-* Deployment on Render, Railway, or PythonAnywhere
-* Improved natural language understanding
 
 ---
 
