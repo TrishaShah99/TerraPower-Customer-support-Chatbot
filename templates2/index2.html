@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TerraPower ATV Support</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header class="tp-header">
+  <div class="tp-logo">
+    <span class="tp-logo-mark">TP</span>
+    <span class="tp-logo-text">TerraPower Electric ATV</span>
+  </div>
+  <div class="tp-header-right">
+    <div class="tp-phone">Support: <strong>{{ phone }}</strong></div>
+    <div class="tp-badge">Customer Service Chatbot</div>
+  </div>
+</header>
+
+<main class="tp-main">
+
+  <!-- LEFT: CHAT -->
+  <section class="tp-chat-section">
+    <div class="tp-chat-header">
+      <h2>Terra – Support Assistant</h2>
+      <p>Professional &amp; friendly help for your TerraPower electric ATV</p>
+    </div>
+
+    <div id="chat-window" class="tp-chat-window">
+      {% if history %}
+        {% for row in history %}
+          <div class="msg msg-user">
+            <div class="msg-label">You</div>
+            <div class="msg-text">{{ row.user_message }}</div>
+          </div>
+          <div class="msg msg-bot">
+            <div class="msg-label">Terra</div>
+            <div class="msg-text">{{ row.bot_reply|safe }}</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="msg msg-bot">
+          <div class="msg-label">Terra</div>
+          <div class="msg-text">
+            Hey! I’m Terra, your TerraPower ATV support assistant. 🚙⚡<br><br>
+            I can help you with troubleshooting, booking service, warranty &amp; spares.<br><br>
+            You can start by typing:<br>
+            • Vehicle not starting<br>
+            • Battery not charging<br>
+            • Book service<br>
+            • Show nearby service centers
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div id="quick-replies" class="tp-quick-replies"></div>
+
+    <form id="chat-form" class="tp-chat-input" autocomplete="off">
+      <input type="text" id="user-input" placeholder="Type your message here..." required>
+      <button type="submit">Send</button>
+    </form>
+
+    <div class="tp-actions">
+      <button id="btn-clear-history" class="secondary">Clear chat log</button>
+      <button id="btn-raise-ticket" class="primary">Raise a support ticket</button>
+    </div>
+  </section>
+
+  <!-- RIGHT: SIDE PANEL -->
+  <aside class="tp-side-panel">
+    <div class="tp-panel-section">
+      <h3>Your Past Queries</h3>
+      <p class="tp-panel-sub">Last 50 messages in this browser session.</p>
+      <ul id="history-list" class="tp-list"></ul>
+    </div>
+
+    <div class="tp-panel-section">
+      <h3>Your Tickets</h3>
+      <p class="tp-panel-sub">Track issues raised with Terra.</p>
+      <ul id="ticket-list" class="tp-list"></ul>
+    </div>
+
+ <div class="tp-panel-section">
+  <h3>Quick Actions</h3>
+
+  <button class="link-btn" onclick="sendQuick('Book a Service Appointment')">Book a Service</button>
+  <button class="link-btn" onclick="sendQuick('Show Nearby Service Centers')">Nearby Service Centers</button>
+  <button class="link-btn" onclick="sendQuick('Warranty Query')">Warranty Help</button>
+  <button class="link-btn" onclick="sendQuick('Battery Not Charging')">Battery & Charging Issues</button>
+  <button class="link-btn" onclick="sendQuick('Vehicle Not Starting')">Vehicle Not Starting</button>
+  <button class="link-btn" onclick="sendQuick('Low Power Issue')">Performance Issues</button>
+  <button class="link-btn" onclick="sendQuick('Brake Issue')">Brake Issues</button>
+  <button class="link-btn" onclick="sendQuick('Spare Parts Query')">Spare Parts</button>
+</div>
+
+
+  </aside>
+
+</main>
+
+<script src="{{ url_for('static', filename='script2.js') }}"></script>
+</body>
+</html>
